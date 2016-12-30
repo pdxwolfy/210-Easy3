@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Function that determines whether a number is a palindrome
+// Test cases:
+//   - isPalindromicNumber(34543)        // true
+//   - isPalindromicNumber(123210)       // false
+//   - isPalindromicNumber(22)           // true
+//   - isPalindromicNumber(5)            // true
+//   - isPalindromicNumber(0)            // true
+// Data structure
+//   input: non-negative integer argument
+//   outout: boolean
+//     - true if number is a palindrome
+//     - false if number is not a palindrome
+// Algorithm
+//   - convert number to string
+//   - determine if string palindromic
+// Abstraction
+
+function reverse(string) {
+  return string.split('').reverse().join('');
+}
+
+function isPalindrome(string) {
+  return string === reverse(string);
+}
+
+function isPalindromicNumber(number) {
+  return isPalindrome(String(number));
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(isPalindromicNumber(34543),  true);
+log(isPalindromicNumber(123210), false);
+log(isPalindromicNumber(22),     true);
+log(isPalindromicNumber(5),      true);
+log(isPalindromicNumber(0),      true);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

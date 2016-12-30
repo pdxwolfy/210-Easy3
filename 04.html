@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Function that determines whether a string is a palindrome
+//   - case matters
+//   - all characters matter
+// Test cases:
+//   - isPalindrome('madam')             // true
+//   - isPalindrome('Madam')             // false (case matters)
+//   - isPalindrome('madam i\'m adam')   // false (all characters matter)
+//   - isPalindrome('356653')            // true
+//   - Edge cases
+//     - isPalindrome('*')                 // true
+//     - isPalindrome('')                  // true
+//     - isPalindrome('mm')                // true
+//     - isPalindrome('mM')                // false
+//     - isPalindrome('Mm')                // false
+//     - isPalindrome('MM')                // true
+// Data structure
+//   input: string argument
+//   outout: boolean
+//     - true if string is a palindrome
+//     - false if string is not a palindrome
+// Algorithm
+//   - string === reversed string
+// Abstraction
+
+function reverse(string) {
+  return string.split('').reverse().join('');
+}
+
+function isPalindrome(string) {
+  return string === reverse(string);
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(isPalindrome('madam')          , true);
+log(isPalindrome('Madam')          , false);
+log(isPalindrome('madam i\'m adam'), false);
+log(isPalindrome('356653')         , true);
+log(isPalindrome('*')              , true);
+log(isPalindrome('')               , true);
+log(isPalindrome('mm')             , true);
+log(isPalindrome('mM')             , false);
+log(isPalindrome('Mm')             , false);
+log(isPalindrome('MM')             , true);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

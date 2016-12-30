@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Function that determines whether a string is a palindrome
+//   - case does not matter
+//   - ignore non-alphanumeric characters
+// Test cases:
+//   - isRealPalindrome('madam')            // true
+//   - isRealPalindrome('Madam')            // true (case does not matter)
+//   - isRealPalindrome('Madam, I\'m Adam') // true (only alphanumerics matter)
+//   - isRealPalindrome('356653')           // true
+//   - isRealPalindrome('356a653')          // true
+//   - isRealPalindrome('123ab321')         // false
+//   - Edge cases
+//     - isPalindrome('*')                 // true
+//     - isPalindrome('')                  // true
+//     - isPalindrome('mm')                // true
+//     - isPalindrome('mM')                // true
+//     - isPalindrome('Mm')                // true
+//     - isPalindrome('MM')                // true
+// Data structure
+//   input: string argument
+//   outout: boolean
+//     - true if normalized string is a palindrome
+//     - false if normalized string is not a palindrome
+// Algorithm
+//   - normalize string
+//     - convert to lower case
+//     - replace non-alphabetic characters with ''
+//   - string === reversed string
+// Abstraction
+
+function normalize(string) {
+  return string.toLowerCase().replace(/[^a-z0-9]/g, '');
+}
+
+function reverse(string) {
+  return string.split('').reverse().join('');
+}
+
+function isPalindrome(string) {
+  return string === reverse(string);
+}
+
+function isRealPalindrome(string) {
+  return isPalindrome(normalize(string));
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(isRealPalindrome('madam'), true);
+log(isRealPalindrome('Madam'), true);
+log(isRealPalindrome('Madam, I\'m Adam'), true);
+log(isRealPalindrome('356653'), true);
+log(isRealPalindrome('356a653'), true);
+log(isRealPalindrome('123ab321'), false);
+log(isRealPalindrome('*'), true);
+log(isRealPalindrome(''), true);
+log(isRealPalindrome('mm'), true);
+log(isRealPalindrome('mM'), true);
+log(isRealPalindrome('Mm'), true);
+log(isRealPalindrome('MM'), true);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

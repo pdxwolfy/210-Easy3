@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Write a function that:
+//     - takes an array of numbers as an argument
+//     - returns an array of numbers with the same number of elemets as argument
+//     - each element of return array is a running total of elements in argument
+// Test cases:
+//   - runningTotal([2, 5, 13]);             // [2, 7, 20]
+//   - runningTotal([14, 11, 7, 15, 20]);    // [14, 25, 32, 47, 67]
+//   - runningTotal([3]);                    // [3]
+//   - runningTotal([]);                     // []
+// Data structure
+//   input: array of numbers argument
+//   outout: array of numbers
+//     - same number of elements as argument
+//     - each element is running total of elements in argumnet
+// Algorithm
+//   - return [] if argument is empty.
+//   - reduce elements of argument
+//     - initialize result to [first element of argument]
+//     - compute last element of result + current element of argument
+//     - append computation to result array
+// Abstraction
+
+function runningTotal(array) {
+  if (array.length === 0) {
+    return [];
+  }
+
+  return array.reduce(
+    function computeRunningTotal(result, value) {
+      var accum = value;
+      if (result.length > 0) {
+        accum += result[result.length - 1];
+      }
+
+      result.push(accum);
+      return result;
+    },
+    []
+  );
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(runningTotal([2, 5, 13]),          [2, 7, 20]);
+log(runningTotal([14, 11, 7, 15, 20]), [14, 25, 32, 47, 67]);
+log(runningTotal([3]),                 [3]);
+log(runningTotal([]),                  []);
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

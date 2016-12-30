@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Generate a random integer between 20 and 200, icnlusive.
+//   - Log a message: "Teddy is XX years old!" where XX is the random integer
+// Test cases:
+// Data structure
+// Algorithm
+//   - getRandomInt min, max
+//     - random number = Math.random() * (max - min) + min
+//     - return Floor(random number)
+//   - Print message
+// Abstraction
+
+function getRandomInt(min, max) {
+  return Math.floor((Math.random() * (max + 1 - min)) + min);
+}
+
+for (var i = 0; i < 500; ++i) {
+  show('Teddy is ' + getRandomInt(20, 200).toString() + ' years old!');
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

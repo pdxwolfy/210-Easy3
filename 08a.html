@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Write a function that:
+//     - swaps the first and last letters of every word
+//     - every word has at least one letter
+//     - input has at least one word
+//     - words are delimited by spaces
+//     - all non-space characters are part of a word
+// Test cases:
+//   - edge cases
+//     - exactly one word
+//     - a word has exactly one character
+//     - a word has exactly two characters
+//     - some words are separated by multiple spaces
+//     - spaces at beginning of string
+//     - spaces at end of string
+//     - words that contain no letters
+//   - swap('Oh what a wonderful day it is'); // 'hO thaw a londerfuw yad ti si'
+//   - swap('Abcde');                         // 'ebcdA'
+//   - swap('a');                             // 'a'
+//   - swap('ab');                            // 'ba'
+//   - swap('  four   score and  seven  ');   // '  rouf   ecors dna  neves  '
+//   - swap('!)+$');                          // '$)+!'
+// Data structure
+//   input: string argument
+//   outout: string
+// Algorithm
+//   replace /\b(\S)(\S*)(\S)\b/ with $3$2$1
+// Abstraction
+
+function swap(words) {
+  var wordsArray = words.split(' ');
+  for (var i = 0; i < wordsArray.length; i++) {
+    wordsArray[i] = swapFirstLastCharacters(wordsArray[i]);
+  }
+
+  return wordsArray.join(' ');
+}
+
+function swapFirstLastCharacters(word) {
+  if (word.length <= 1) {
+    return word;
+  }
+
+  return word[word.length - 1] + word.slice(1, -1) + word[0];
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+log(swap('Oh what a wonderful day it is'), 'hO thaw a londerfuw yad ti si');
+log(swap('Abcde'),                         'ebcdA');
+log(swap('a'),                             'a');
+log(swap('ab'),                            'ba');
+log(swap('  four   score and  seven  '),   '  rouf   ecors dna  neves  ');
+log(swap('  four score and seven  '),      '  rouf ecors dna neves  ');
+log(swap('four   score and  seven'),       'rouf   ecors dna  neves');
+log(swap(' four score and seven '),        ' rouf ecors dna neves ');
+log(swap('four   score   and   seven'),    'rouf   ecors   dna   neves');
+log(swap('!)+$'),                          '$)+!');
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

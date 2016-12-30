@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Solicit user's age
+//   - Solicit age at which they want to retire
+//   - Display year in which they will retire and how many working years remain
+// Test cases:
+//   What is your age? 30
+//   At what age would you like to retire? 70
+//
+//   It's 2016. You will retire in 2056.
+//   You have only 40 years of work to go!
+//   --
+//   What is your age? 65
+//   At what age would you like to retire? 65
+//
+//   It's 2016. You will retire in 2016.
+//   You have only 0 years of work to go!
+// Data structure
+//   User's age: number
+//   Retirement age: number
+// Algorithm
+//   - Prompt for user's age
+//   - Prompt for user's desired retirement age
+//   - Get current year
+//   - Determine retirement year: current year + (retirement age - current age)
+//   - Determine years til retirement: retirement age - current age
+// Abstraction
+
+function whenWillIRetire() {
+  var currentAge = parseInt(prompt('What is your age?'), 10);
+  var retirementAge = parseInt(prompt('At what age would you like to retire?'),
+                               10);
+
+  var currentYear = (new Date()).getYear() + 1900;
+  var yearsTilRetirement = retirementAge - currentAge;
+  var retirementYear = currentYear + yearsTilRetirement;
+
+  show("It's " + currentYear.toString() +
+       ' You will retire in ' + retirementYear.toString());
+  show('You have only ' + yearsTilRetirement.toString() +
+       ' years of work to go.');
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+whenWillIRetire();
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>

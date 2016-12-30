@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <title>javascript</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assert.js"></script>
+  </head>
+
+  <body>
+    <pre id="console">
+      <script>
+/* global show, log, theEnd */
+
+'use strict';
+
+// - Understand the problem
+//   * implicit knowledge
+//   * terminology
+//   * ask questions
+//   * input
+//   * output
+// - Test cases
+//   * edge cases
+//   * handling failure
+//   * ask questions
+// - Data Structure
+//   * input
+//   * output
+//   * rules/logic as data
+// - Algorithm
+//   * use language of data structure (map, split, etc)
+// - Abstraction
+//   * 1-2 sentences
+//*****************************************************************************
+// The problem:
+//   - Solicit 6 numbers
+//   - Report whether the 6th number occurs somewhere in the first 5 numbers
+//   - Inputs
+//     - 6 numbers. Store first 5 numbers in an Array.
+//   - Outputs
+//     - A console message
+// Test cases:
+//   - Enter the 1st number: 25
+//   - Enter the 2nd number: 15
+//   - Enter the 3rd number: 20
+//   - Enter the 4th number: 17
+//   - Enter the 5th number: 23
+//   - Enter the last number: 17
+//   -
+//   - The number 17 appears in [25, 15, 20, 17, 23].
+//   - ---
+//   -
+//   - Enter the 1st number: 25
+//   - Enter the 2nd number: 15
+//   - Enter the 3rd number: 20
+//   - Enter the 4th number: 17
+//   - Enter the 5th number: 23
+//   - Enter the last number: 18
+//   -
+//   - The number 18 does not appear in [25, 15, 20, 17, 23].// Data structure
+// Algorithm
+//   - Prompt for 5 numbers and put them in an Array
+//   - Prompt for the last number
+//   - Report whether last number is included in array
+// Abstraction
+
+var NTH = { 1: '1st', 2: '2nd', 3: '3rd', 4: '4th', 5: '5th' };
+
+function asArrayString(array) {
+  return '[' + array.map(String).join(', ') + ']';
+}
+
+function search() {
+  var searchList = [];
+  var searchValue;
+  var index;
+  var nth;
+  var appears = 'appears';
+
+  for (index = 0; index < 5; ++index) {
+    nth = NTH[(index + 1).toString()];
+    searchList.push(parseInt(prompt('Enter the ' + nth + ' number:'), 10));
+  }
+
+  searchValue = parseInt(prompt('Enter the last number:'), 10);
+
+  appears = 'appears';
+  if (searchList.indexOf(searchValue) === -1) {
+    appears = 'does not appear';
+  }
+
+  show('The number ' + searchValue.toString() + ' ' + appears + ' in ' +
+       asArrayString(searchList));
+}
+
+/* eslint-disable vars-on-top */
+/* eslint-disable no-magic-numbers */
+search();
+theEnd();
+      </script>
+    </pre>
+  </body>
+</html>
